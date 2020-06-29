@@ -40,4 +40,4 @@ def lib1 = new com.lib1()
 node {
 stage('2') {
 	dschr.dockerScriptRemote("10.5.1.68")
-}}}
+}}
