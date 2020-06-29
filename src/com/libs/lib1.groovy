@@ -15,5 +15,5 @@ remote.allowAnyHosts = true
 
 sshCommand remote: remote1, command: "ls -l"
 
-}}
+}
 return this
