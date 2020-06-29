@@ -27,7 +27,7 @@ remote1.name = "10.5.1.68"
 remote1.host = "10.5.1.68"
 remote1.allowAnyHosts = true
 
-  withCredentials([sshUserPrivateKey(credentialsId: "centos_ssh", keyFileVariable: 'identity1', passphraseVariable: '', usernameVariable: 'userName'),
+  withCredentials([sshUserPrivateKey(credentialsId: "centos_ssh", keyFileVariable: 'identity1', passphraseVariable: '', usernameVariable: 'userName1'),
 ]) {
         remote1.user = userName1
         remote1.identityFile = identity1
