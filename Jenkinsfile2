@@ -1,0 +1,43 @@
+properties([
+    parameters([
+        string(name: 'ssh_creds', defaultValue: 'ubuntu_ssh', description: 'ssh credentials id for target node'),
+        string(name: 'rhost_ip', defaultValue: '10.5.1.177', description: 'target mon node ip address'),
+        string(name: 'git_branch_mon', defaultValue: 'master', description: 'mon git branch/tag name'),
+        string(name: 'ci_branch_mon', defaultValue: 'master', description: 'mon ci git branch/tag name'),
+    ])])
+node {
+def remote = [:]
+remote.name = "${params.rhost_ip}"
+remote.host = "${params.rhost_ip}"
+remote.allowAnyHosts = true
+
+  withCredentials([sshUserPrivateKey(credentialsId: 'ubuntu_ssh', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName'),
+]) {
+        remote.user = userName
+        remote.identityFile = identity
+stage('1') {
+    sshCommand remote: remote, command: "ls -l"
+} //stage
+} // withcredential
+} //node
+
+node {
+def remote1 = [:]
+remote1.name = "10.5.1.68"
+remote1.host = "10.5.1.68"
+remote1.allowAnyHosts = true
+
+  withCredentials([sshUserPrivateKey(credentialsId: "centos_ssh", keyFileVariable: 'identity1', passphraseVariable: '', usernameVariable: 'userName1'),
+]) {
+        remote1.user = userName1
+        remote1.identityFile = identity1
+stage('2') {
+    sshCommand remote: remote1, command: "ls -l"
+}}}
+
+
+def lib1 = new com.lib1()
+node {
+stage('2') {
+	dschr.dockerScriptRemote("10.5.1.68")
+}}}
