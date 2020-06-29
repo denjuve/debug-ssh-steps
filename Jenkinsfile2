@@ -2,11 +2,14 @@ properties([
     parameters([
         string(name: 'ssh_creds', defaultValue: 'ubuntu_ssh', description: 'ssh credentials id for target node'),
         string(name: 'rhost_ip', defaultValue: '10.5.1.177', description: 'target mon node ip address'),
-        string(name: 'git_branch_mon', defaultValue: 'master', description: 'mon git branch/tag name'),
-        string(name: 'ci_branch_mon', defaultValue: 'master', description: 'mon ci git branch/tag name'),
     ])])
 
 def libmy1 = new com.libs.lib1()
+
+node {
+stage('0') {
+	libmy1.func("10.5.1.68")
+}}
 
 node {
 def remote = [:]
@@ -20,9 +23,7 @@ remote.allowAnyHosts = true
         remote.identityFile = identity
 stage('1') {
     sshCommand remote: remote, command: "ls -l"
-} //stage
-} // withcredential
-} //node
+}}}
 
 node {
 def remote1 = [:]
@@ -37,10 +38,3 @@ remote1.allowAnyHosts = true
 stage('2') {
     sshCommand remote: remote1, command: "ls -l"
 }}}
-
-
-
-node {
-stage('3') {
-	libmy1.func("10.5.1.68")
-}}
