@@ -34,7 +34,7 @@ remote1.allowAnyHosts = true
         remote1.user = userName
         remote1.identityFile = identity
 stage('2') {
-    sshCommand remote1: remote1, command: "ls -l"
+    sshCommand remote1: remote, command: "ls -l"
 } //stage
 } // withcredential
 } //node
