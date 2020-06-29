@@ -24,8 +24,8 @@ stage('1') {
 
 node {
 def remote1 = [:]
-remote1.name = 10.5.1.68
-remote1.host = 10.5.1.68
+remote1.name = "10.5.1.68"
+remote1.host = "10.5.1.68"
 remote1.allowAnyHosts = true
 
   withCredentials([sshUserPrivateKey(credentialsId: "centos_ssh", keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName'),
