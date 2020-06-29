@@ -1,6 +1,6 @@
 package com.libs
 
-def func(r_ip)
+def func(r_ip){
 
 def remote = [:]
 remote.name = "${r_ip}"
@@ -15,5 +15,5 @@ remote.allowAnyHosts = true
 
 sshCommand remote: remote1, command: "ls -l"
 
-}
+}}
 return this
