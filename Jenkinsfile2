@@ -5,7 +5,9 @@ properties([
         string(name: 'git_branch_mon', defaultValue: 'master', description: 'mon git branch/tag name'),
         string(name: 'ci_branch_mon', defaultValue: 'master', description: 'mon ci git branch/tag name'),
     ])])
-def lib1 = new com.lib1()
+
+def lib1 = new com.libs.lib1()
+
 node {
 def remote = [:]
 remote.name = "${params.rhost_ip}"
