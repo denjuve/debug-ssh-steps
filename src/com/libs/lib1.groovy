@@ -13,7 +13,7 @@ remote.allowAnyHosts = true
         remote.identityFile = identity
 
 
-sshCommand remote: remote1, command: "ls -l"
+sshCommand remote: remote, command: "ls -l"
 
 }}
 return this
