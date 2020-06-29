@@ -32,5 +32,5 @@ remote1.allowAnyHosts = true
         remote1.user = userName1
         remote1.identityFile = identity1
 stage('2') {
-    sshCommand remote1: remote1, command: "ls -l"
+    sshCommand remote: remote1, command: "ls -l"
 }}}
