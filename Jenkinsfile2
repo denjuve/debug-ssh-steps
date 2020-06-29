@@ -5,6 +5,7 @@ properties([
         string(name: 'git_branch_mon', defaultValue: 'master', description: 'mon git branch/tag name'),
         string(name: 'ci_branch_mon', defaultValue: 'master', description: 'mon ci git branch/tag name'),
     ])])
+def lib1 = new com.lib1()
 node {
 def remote = [:]
 remote.name = "${params.rhost_ip}"
@@ -36,8 +37,8 @@ stage('2') {
 }}}
 
 
-def lib1 = new com.lib1()
+
 node {
-stage('2') {
+stage('3') {
 	dschr.dockerScriptRemote("10.5.1.68")
 }}
