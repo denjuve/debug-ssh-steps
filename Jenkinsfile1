@@ -12,7 +12,6 @@ remote.host = "${params.rhost_ip}"
 remote.allowAnyHosts = true
 
   withCredentials([sshUserPrivateKey(credentialsId: 'ubuntu_ssh', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName'),
-      usernamePassword(credentialsId: '5gt-ci', usernameVariable: 'u5g', passwordVariable: 'p5g')
 ]) {
         remote.user = userName
         remote.identityFile = identity
@@ -28,11 +27,10 @@ remote1.name = "10.5.1.68"
 remote1.host = "10.5.1.68"
 remote1.allowAnyHosts = true
 
-  withCredentials([sshUserPrivateKey(credentialsId: "centos_ssh", keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName'),
-      usernamePassword(credentialsId: '5gt-ci', usernameVariable: 'u5g', passwordVariable: 'p5g')
+  withCredentials([sshUserPrivateKey(credentialsId: "centos_ssh", keyFileVariable: 'identity1', passphraseVariable: '', usernameVariable: 'userName'),
 ]) {
-        remote1.user = userName
-        remote1.identityFile = identity
+        remote1.user = userName1
+        remote1.identityFile = identity1
 stage('2') {
     sshCommand remote1: remote1, command: "ls -l"
 }}}
